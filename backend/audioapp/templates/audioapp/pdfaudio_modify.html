@@ -1,0 +1,28 @@
+{% extends 'audioapp/base.html' %}
+{% load crispy_forms_tags %}
+{% block title %}Modify Audio Details{% endblock title %}
+{% block content %}
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid">
+	  <a class="navbar-brand" href="{% url 'audioapp:home' %}">Home</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav">
+        <a class="nav-link"  href="{% url 'audioapp:pdf-create' %}">PDF Audio Maker</a>
+        <a class="nav-link" href="{% url 'audioapp:audio-create' %}">Text Audio Maker</a>
+	<a class="nav-link" href="{% url 'audioapp:pdf-details' %}">PDF Audio Playlist</a>
+      </div>
+    </div>
+  </div>
+</nav>
+<div class="container">
+	<h2 class="my-4"> Modify your Text details</h2>
+	<form method='post' enctype="multipart/form-data">
+		{% csrf_token %}
+		{{pdf_form|crispy}}
+		<button class="btn btn-primary my-4" type="submit">Submit</button>
+	</form>
+</div>
+{% endblock content %}
